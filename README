@@ -1,0 +1,31 @@
+Requirements:
+ 1.) Ruby 2.0 + installed
+ 2.) No external gems were used.
+
+To Run Tests (uses built in minitest framework):
+ 1.) Open up Terminal.
+ 2.) Go into '/parser_app' directory
+ 3.) Type 'rake test'
+
+To See Rake Options:
+ 1.) Inside of Terminal type 'rake'
+
+To Run the App and See the Output:
+ 1.) Open up Terminal.
+ 2.) Go into '/bin' directory inside the app.
+ 3.) To run the app type 'ruby parser_app.rb 1' or 'ruby parser_app.rb 1 2 3'
+     1 => 'Output sorted by gender and last name'
+     2 => 'Output sorted by birth date and last name'
+     3 => 'Output sorted by last name'
+
+Notes:
+ 1.) Some assumptions were made about the incoming data, such as:
+     Data would come in the same consistently, based on the type of delimiter the data file was using.
+ 2.) Explanation of approach:
+     Parse through each line to determine the delimiter being used based on the three accepted delimiters(Pipe,comma, and space).
+     Based on the delimiter found, pass data to the appropriate data mapper for that type.
+     Hydrate a person object with the incoming data, and inject the person into an array.
+     Once all the data has been parsed through, sort the arrays based on the specified sort type,
+     Then call the overwritten .to_s method.
+        The overwritten .to_s method returns a representational string of the person object, in the desired field order (e.g. Last Name First Name etc.)
+ 3.) For a real world application, that collected real data, I would have used an ETL tool that listens in for new files being dropped in, or triggered either based on a schedule or on some sort of listener event. Thank you.  
